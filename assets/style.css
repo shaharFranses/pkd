@@ -1,0 +1,203 @@
+/* PKD site styles. Tokens mirror the PKD Design System. Rule #1: NO YELLOW in UI. */
+:root {
+  --paper: #FBF7F0;
+  --white: #FFFFFF;
+  --ink: #22201C;
+  --muted: #5B564D;
+  --line: #E6DFD3;
+  --lilac: #CDBDFF;
+  --mint: #8FE3B0;
+  --sky: #9DC7FF;
+  --coral: #FF9F6B;
+  --teacake-pink: #F7C8C0;
+  --freight-sky: #CFE6FA;
+
+  --font-display: "Bagel Fat One", system-ui, sans-serif;
+  --font-body: Nunito, system-ui, sans-serif;
+
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-14: 56px;
+
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --border-ui: 3px;
+  --shadow-hard: 8px 8px 0 var(--ink);
+  --shadow-hard-sm: 3px 3px 0 var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a { color: var(--ink); }
+a:hover { color: var(--muted); }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px var(--space-6) 80px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-14);
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+}
+.site-header nav { display: flex; gap: var(--space-6); font-weight: 800; }
+.site-header nav a { text-decoration: none; }
+
+/* Logo: base skin. Shape, outline, shadow and lowercase wordmark never change. */
+.logo {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--white);
+  border: var(--border-ui) solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 4px 16px 8px;
+  box-shadow: var(--shadow-hard-sm);
+  transform: rotate(-4deg);
+}
+.logo:hover { color: var(--ink); }
+
+/* Hero */
+.hero h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 1;
+}
+.hero p { margin: var(--space-4) 0 0; font-size: 18px; color: var(--muted); max-width: 520px; }
+
+/* Game grid */
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-8);
+}
+.card {
+  border: var(--border-ui) solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.card.freight { background: var(--freight-sky); }
+.card.bakery { background: var(--teacake-pink); }
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: var(--border-ui) solid var(--ink);
+  display: block;
+}
+.card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.1;
+}
+.card p { margin: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.tag {
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 2px 10px;
+}
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; margin-top: auto; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  font-weight: 800;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--lilac);
+  border: var(--border-ui) solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 10px 24px;
+  box-shadow: var(--shadow-hard-sm);
+  cursor: pointer;
+}
+.btn:hover { color: var(--ink); transform: translate(1px, 1px); box-shadow: 2px 2px 0 var(--ink); }
+.btn.secondary { background: var(--white); }
+.btn:focus-visible, .logo:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+
+/* Play page */
+.back { font-weight: 800; text-decoration: none; }
+.play-head { display: flex; flex-direction: column; gap: var(--space-4); }
+.play-head h1 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 7vw, 64px); line-height: 1; }
+.play-head p { margin: 0; font-size: 18px; color: var(--muted); max-width: 640px; }
+
+.stage {
+  border: var(--border-ui) solid var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hard);
+  background: var(--ink);
+  overflow: hidden;
+  margin: 0 auto;
+  width: 100%;
+}
+.stage iframe { display: block; width: 100%; height: 100%; border: 0; }
+.stage.landscape { aspect-ratio: 16 / 9; }
+.stage.portrait { aspect-ratio: 390 / 844; max-width: 420px; }
+
+/* On phones, the embedded frame is replaced by a full-screen play button. */
+.mobile-play { display: none; }
+@media (max-width: 720px) {
+  .stage { display: none; }
+  .mobile-play { display: flex; }
+}
+
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-8); }
+.about h2 { margin: 0 0 var(--space-2); font-family: var(--font-display); font-weight: 400; font-size: 24px; }
+.about p, .about ul { margin: 0; }
+.about ul { padding-left: 20px; }
+
+/* Footer */
+.site-footer {
+  border-top: 2px solid var(--line);
+  padding-top: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-4);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.site-footer a { color: var(--muted); }
